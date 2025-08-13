@@ -1,7 +1,17 @@
 const { REST, Routes } = require("discord.js");
-const { clientId, guildId, token } = require("./config.json");
 const fs = require("node:fs");
 const path = require("node:path");
+
+const clientId = process.env.CLIENT_ID;
+const guildId = process.env.GUILD_ID;
+const token = process.env.TOKEN;
+
+if (!clientId || !guildId || !token) {
+  console.error(
+    "❌ Missing one or more environment variables: CLIENT_ID, GUILD_ID, TOKEN"
+  );
+  process.exit(1);
+}
 
 const commands = [];
 // Grab all the command folders from the commands directory you created earlier

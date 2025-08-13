@@ -7,7 +7,8 @@ const {
   GatewayIntentBits,
   MessageFlags,
 } = require("discord.js");
-const { token } = require("./config.json");
+
+const token = process.env.TOKEN;
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
