@@ -3,17 +3,17 @@ const { SlashCommandBuilder } = require("discord.js");
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("diceroll")
-    .setDescription("Rolls a dice with a specified number of sides.")
+    .setDescription("Rolls a dice. Default is 6 sides if not specified.")
     .addIntegerOption((option) =>
       option
         .setName("sides")
-        .setDescription("Number of sides on the dice")
+        .setDescription("Number of sides on the dice (default: 6)")
         .setMinValue(2)
         .setMaxValue(1000)
-        .setRequired(true)
+        .setRequired(false)
     ),
   async execute(interaction) {
-    const sides = interaction.options.getInteger("sides");
+    const sides = interaction.options.getInteger("sides") || 6;
     const result = Math.floor(Math.random() * sides) + 1;
     await interaction.reply(`🎲 You rolled a **${result}** (1-${sides})`);
   },
