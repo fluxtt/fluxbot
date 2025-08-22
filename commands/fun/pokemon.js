@@ -9,8 +9,8 @@ module.exports = {
     await interaction.deferReply(); // in case API is slow
 
     try {
-      // There are ~1302 Pokémon as of Gen 9, adjust if needed
-      const randomId = Math.floor(Math.random() * 1302) + 1;
+      // There are ~1025 Pokémon as of August 2025, adjust if needed
+      const randomId = Math.floor(Math.random() * 1025) + 1;
 
       // Fetch Pokémon data
       const pokemonRes = await fetch(
